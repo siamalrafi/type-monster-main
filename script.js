@@ -1,6 +1,6 @@
 const display = document.getElementById("display");
 const question = document.getElementById("question");
-const startBtn = document.getElementById("start");
+const startBtn = document.getElementById("starts");
 const countdownOverlay = document.getElementById("countdown");
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
@@ -78,14 +78,13 @@ const gameOver = () => {
   // make it inactive
   display.classList.add("inactive");
   // show result
+  addHistory(questionText, timeTaken, errorCount);
   resultModal.innerHTML += `
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${parseInt(timeTaken)}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
     <button onclick="closeModal()">Close</button>
   `;
-
-  addHistory(questionText, timeTaken, errorCount);
 
   // restart everything
   startTime = null;
@@ -124,8 +123,8 @@ const start = () => {
 };
 
 // START Countdown
-// startBtn.addEventListener("click", start);
-document.getElementById('starts').addEventListener('click', function () {
+// document.getElementById('starts').addEventListener('click', function () {
+startBtn.addEventListener('click', function () {
 
   // If history exists, show it
   displayHistory();
