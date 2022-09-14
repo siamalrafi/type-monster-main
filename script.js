@@ -112,7 +112,8 @@ const start = () => {
     if (count === 0) {
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "flex";
+      countdownOverlay.style.display = "none";
+      countdownOverlay.innerHTML = '';
       display.classList.remove("inactive");
 
       clearInterval(startCountdown);
@@ -121,7 +122,7 @@ const start = () => {
     count--;
   }, 1000);
 };
-start();
+
 // START Countdown
 // startBtn.addEventListener("click", start);
 document.getElementById('starts').addEventListener('click', function () {
@@ -134,7 +135,7 @@ document.getElementById('starts').addEventListener('click', function () {
     const currentTime = new Date().getTime();
     const timeSpent = (currentTime - startTime) / 1000;
 
-
-    document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
+    document.getElementById("show-time").innerHTML = `${startTime ? parseInt(timeSpent) : 0} seconds`;
   }, 1000);
+  start();
 })
